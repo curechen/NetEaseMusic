@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { getSongListContent } from 'network/find'
 
 export default {
   name: 'SongListItem',
@@ -26,9 +25,7 @@ export default {
   methods: {
     itemClick() {
       let id = this.listItem.id
-      getSongListContent(id).then((res) => {
-        console.log(res)
-      })
+      this.$router.push('/index/songListContent' + id)
     },
   },
 }
@@ -71,13 +68,13 @@ export default {
 .list-info p {
   /* white-space: nowrap; */
   /* margin-bottom: 3px; */
+  width: 100%;
   display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   /* 文本溢出 */
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 100%;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   color: #373737;
 }
 

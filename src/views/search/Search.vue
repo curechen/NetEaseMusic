@@ -32,8 +32,8 @@ export default {
       let searchKey = this.searchKey
       searchMusic(searchKey).then(
         (res) => {
-          console.log(res)
           this.musicList = res.result.songs
+          console.log(this.musicList)
         },
         (err) => {
           console.log(err)

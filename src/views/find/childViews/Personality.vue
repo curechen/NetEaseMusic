@@ -6,7 +6,7 @@
       推荐歌单
       <i class="el-icon-arrow-right" />
     </p>
-    <song-list :songLists="songLists" />
+    <song-list :song-lists="songLists" />
   </div>
 </template>
 

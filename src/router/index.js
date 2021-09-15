@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 // 一级路由
 const Login = () => import('views/login/Login')
 const Index = () => import('views/index/Index')
+const SongListContent = () => import('views/songListContent/SongListContent')
 const Find = () => import('views/find/Find')
 const Friends = () => import('views/friends/Friends')
 const Player = () => import('views/player/Player')
@@ -46,6 +47,10 @@ const routes = [
       {
         path: '/',
         redirect: 'find',
+      },
+      {
+        path: 'songListContent:id',
+        component: SongListContent
       },
       {
         path: 'search:information',
