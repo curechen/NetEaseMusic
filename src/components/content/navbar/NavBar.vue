@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="logo"></div>
-    <i class="el-icon-arrow-left"></i>
-    <i class="el-icon-arrow-right"></i>
+    <i class="el-icon-arrow-left" @click="goBack" />
+    <i class="el-icon-arrow-right" @click="goForward" />
 
     <i class="el-icon-search"></i>
     <input
@@ -25,20 +25,28 @@
 <script>
 export default {
   name: 'NavBar',
-  data () {
+  data() {
     return {
-      query: ''
+      query: '',
     }
   },
   methods: {
     enterSearch() {
-      this.$router.push({
-        path: '/index/search' + this.query,
-      }).catch((err) => {
-        console.log(err)
-      })
-    }
-  }
+      this.$router
+        .push({
+          path: '/index/search' + this.query,
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    goBack() {
+      this.$router.go(-1)
+    },
+    goForward() {
+      this.$router.go(1)
+    },
+  },
 }
 </script>
 
@@ -81,6 +89,10 @@ export default {
   font-size: 13px;
 }
 
+.el-icon-arrow-left:hover, .el-icon-arrow-right:hover {
+  cursor: pointer;
+}
+
 .el-icon-search {
   position: absolute;
   top: 24px;
@@ -106,7 +118,7 @@ export default {
   font-size: 12px;
 }
 
-.search::-webkit-input-placeholder { 
+.search::-webkit-input-placeholder {
   color: #e66262;
 }
 
@@ -123,7 +135,6 @@ export default {
   color: #f6c5c5;
   font-size: 20px;
 }
-
 
 .draft1 img {
   position: absolute;

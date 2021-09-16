@@ -69,14 +69,14 @@ export default {
       })
     },
   },
-  watch: {
-    // eslint-disable-next-line
-    $route: function (to, from) {
-      // 若活跃路由发生改变，则重新搜索歌曲
-      this.searchKey = this.$route.params.information
-      this.searchMusic(this.searchKey)
-    },
-  },
+  // watch: {
+  //   // eslint-disable-next-line
+  //   $route: function (to, from) {
+  //     // 若活跃路由发生改变，则重新搜索歌曲
+  //     this.searchKey = this.$route.params.information
+  //     this.searchMusic(this.searchKey)
+  //   },
+  // },
 }
 </script>
 
@@ -91,7 +91,7 @@ export default {
   line-height: 30px;
   color: #8888a5;
   font-size: 14px;
-  border-top: 1px solid #f2f2f2;
+  /* border-top: 1px solid #f2f2f2; */
   /* background-color: pink; */
 }
 

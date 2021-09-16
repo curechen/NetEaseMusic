@@ -74,7 +74,7 @@ export default {
 
 .el-main {
   background-color: #fff;
-  padding: 10px 30px;
+  padding: 0;
 }
 
 .el-footer {

@@ -1,5 +1,5 @@
 <template>
-  <div class="top-bar">
+  <div class="content-top-bar">
     <div
       v-for="(item, index) in titles"
       :key="index"
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'TopBar',
+  name: 'ContentTopBar',
   props: {
     titles: {
       type: Array,
@@ -39,31 +39,31 @@ export default {
 </script>
 
 <style scoped>
-.top-bar {
+.content-top-bar {
   display: flex;
   width: 550px;
-  height: 45px;
-  line-height: 45px;
+  height: 25px;
+  line-height: 25px;
   text-align: center;
-  font-size: 16px;
-  background-color: white;
-  margin-bottom: 10px;
+  font-size: 14px;
+  /* background-color: pink; */
+  margin-bottom: 5px;
 }
 
-.top-bar .top-bar-item {
+.content-top-bar .top-bar-item {
   margin-right: 20px;
 }
 
-.top-bar .top-bar-item span {
+.content-top-bar .top-bar-item span {
   color: #373737;
 }
 
-.top-bar .active {
+.content-top-bar .active {
   font-weight: bold;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
-.top-bar .active span {
+.content-top-bar .active span {
   padding-bottom: 5px;
   border-bottom: 3px solid #ec4141;
 }
