@@ -48,10 +48,16 @@ export default {
   font-size: 14px;
   /* background-color: pink; */
   margin-bottom: 5px;
+  padding-left: 30px;
 }
 
 .content-top-bar .top-bar-item {
   margin-right: 20px;
+}
+
+.content-top-bar .top-bar-item span:hover {
+  cursor: pointer;
+  color: black;
 }
 
 .content-top-bar .top-bar-item span {

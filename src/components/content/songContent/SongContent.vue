@@ -157,7 +157,7 @@ export default {
 }
 
 .song-content ul li .song-singer {
-  color: #507dc0;
+  color: #363636;
   font-size: 14px;
   width: 160px;
 

@@ -25,7 +25,9 @@ export default {
   methods: {
     itemClick() {
       let id = this.listItem.id
-      this.$router.push('/index/songListContent' + id)
+      this.$router.push({
+        path: '/index/songListContent' + id
+      })
     },
   },
 }
