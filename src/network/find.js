@@ -14,6 +14,13 @@ export function getRecommendSongList() {
   })
 }
 
+// 获取推荐歌单
+export function getRecommend() {
+  return request({
+    url: 'personalized'
+  })
+}
+
 // 获取歌单详情
 export function getSongListContent(id) {
   return request({

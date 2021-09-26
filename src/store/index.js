@@ -10,7 +10,19 @@ const store = new Vuex.Store({
   state: {
     profile: '',
     showLogin: 'true',
-    musicInfo: {},
+    // 当前歌曲的详细信息
+    songDetail: {
+      name: '',
+      al: {
+        picUrl: '',
+      },
+      ar: [
+        {
+          name: '',
+        },
+      ],
+      dt: 0
+    },
     // 播放列表
     musiclistId: [],
     // 播放数量

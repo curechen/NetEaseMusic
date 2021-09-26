@@ -87,7 +87,7 @@ export default {
   created() {
     this.id = this.$route.params.id
     getSongListContent(this.id).then((res) => {
-      console.log(res)
+      // console.log(res)
       this.musicList = res.playlist.tracks
       this.information = res.playlist
       // console.log(this.information);
@@ -99,7 +99,7 @@ export default {
       // console.log(this.information);
     },
     extendContent() {
-      console.log('haha');
+      // console.log('haha');
       this.show = !this.show
     }
   },

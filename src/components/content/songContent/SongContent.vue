@@ -17,18 +17,20 @@
         <span class="song-num">{{ sortIndex(index) }}</span>
         <span class="song-name">
           {{ item.name }}
-          <i class="mv" v-if="item.mvid != 0" @click="playMV(item.mvid)" />
+          <!-- <i class="mv" v-if="item.mvid != 0" @click="playMV(item.mvid)" /> -->
         </span>
         <span class="song-singer">{{ item.ar[0].name }}</span>
         <span class="song-album">{{ item.al.name }}</span>
-        <span class="song-duration">{{ getDuration(item.dt) }}</span>
+        <span class="song-duration">{{ item.dt | filterTime }}</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { playMusic } from 'network/search'
+import { playMusic, getSongDetail } from 'network/search'
+
+import { getDuration } from 'common/utils'
 
 export default {
   name: 'SongContent',
@@ -41,42 +43,45 @@ export default {
     },
   },
   data() {
-    return {
-      songUrl: '',
-    }
+    return {}
   },
   methods: {
-    getDuration(duration) {
-      // console.log(duration)
+    // getDuration(duration) {
+    //   // console.log(duration)
 
-      // parseInt保留整数部分，舍弃小数部分
-      let allSecond = parseInt(duration / 1000)
-      let min = parseInt(allSecond / 60)
-      let sec = allSecond - min * 60
-      sec = sec < 10 ? '0' + sec : sec
-      return min + ':' + sec
-    },
+    //   // parseInt保留整数部分，舍弃小数部分
+    //   let allSecond = parseInt(duration / 1000)
+    //   let min = parseInt(allSecond / 60)
+    //   let sec = allSecond - min * 60
+    //   sec = sec < 10 ? '0' + sec : sec
+    //   return min + ':' + sec
+    // },
     // 索引排序
     sortIndex: function (index) {
       return index < 9 ? '0' + (index + 1) : index + 1
     },
 
+    // 播放歌曲包括获取歌曲url和获得歌曲详细内容两部分
     playMusic(id) {
       playMusic(id).then((res) => {
-        this.songUrl = res.data[0].url
-        console.log(this.songUrl)
-        this.$store.commit('setMusicUrl', this.songUrl)
+        console.log(res)
+        let songUrl = res.data[0].url
+        this.$store.commit('setMusicUrl', songUrl)
+        this.$store.commit('setMusicState')
+      })
+
+      getSongDetail(id).then((res) => {
+        console.log(res.songs[0])
+        let songDetail = res.songs[0]
+        this.$store.commit('setSongDetail', songDetail)
       })
     },
   },
-  // watch: {
-  //   // eslint-disable-next-line
-  //   $route: function (to, from) {
-  //     // 若活跃路由发生改变，则重新搜索歌曲
-  //     this.searchKey = this.$route.params.information
-  //     this.searchMusic(this.searchKey)
-  //   },
-  // },
+  filters: {
+    filterTime(time) {
+      return getDuration(time)
+    }
+  }
 }
 </script>
 

@@ -7,8 +7,14 @@
 <script>
 export default {
   name: 'Friends',
+  data() {
+    return {
+      activePath: 'find',
+    }
+  },
 }
 </script>
 
 <style scoped>
+
 </style>

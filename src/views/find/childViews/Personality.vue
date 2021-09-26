@@ -14,7 +14,10 @@
 import Swiper from 'components/common/swiper/Swiper.vue'
 import SongList from 'components/content/songList/SongList.vue'
 
-import { getBanner, getRecommendSongList } from 'network/find'
+import {
+  getBanner,
+  getRecommend,
+} from 'network/find'
 
 export default {
   name: 'Personality',
@@ -29,19 +32,36 @@ export default {
     }
   },
   mounted() {
-    getBanner().then((res) => {
-      // console.log(res)
-      this.bannersInfo = res.banners
-    })
-    getRecommendSongList().then((res) => {
-      // console.log(res.recommend);
-      // console.log(this.songLists.length);
-      for (let item of res.recommend) {
-        if (this.songLists.length < 10) {
-          this.songLists.push(item)
+    this.getBanner()
+    this.getRecommend()
+  },
+  methods: {
+    getBanner() {
+      getBanner().then((res) => {
+        // console.log(res)
+        this.bannersInfo = res.banners
+      })
+    },
+    getRecommend() {
+      getRecommend().then((res) => {
+        for (let item of res.result) {
+          if (this.songLists.length < 10) {
+            this.songLists.push(item)
+          }
         }
-      }
-    })
+      })
+
+      // 获取每日推荐歌单
+      // getRecommendSongList().then((res) => {
+      //   console.log(res.recommend)
+      //   // console.log(this.songLists.length);
+      //   for (let item of res.recommend) {
+      //     if (this.songLists.length < 10) {
+      //       this.songLists.push(item)
+      //     }
+      //   }
+      // })
+    },
   },
 }
 </script>

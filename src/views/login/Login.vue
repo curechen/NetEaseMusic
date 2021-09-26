@@ -107,7 +107,7 @@ export default {
 /* .inputBox不能设置为absolute，会使它也脱离正常的文档流，两个并列的inputBox会重合 */
 .login-box .inputBox {
   position: relative;
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 .login-box .inputBox input {
@@ -130,7 +130,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 10px 0;
+  padding: 14px 0;
   font-size: 16px;
   color: white;
   /* 鼠标点击事件设置为无，否则鼠标在label标签上点击无法输入文字 */

@@ -33,7 +33,7 @@ export default {
       searchMusic(searchKey).then(
         (res) => {
           this.musicList = res.result.songs
-          console.log(this.musicList)
+          // console.log(this.musicList)
         },
         (err) => {
           console.log(err)

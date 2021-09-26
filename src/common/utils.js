@@ -31,7 +31,19 @@ export function formatDate(date, fmt) {
   }
   return fmt
 }
-
-function padLeftZero (str) {
+function padLeftZero(str) {
   return ('00' + str).substr(str.length)
+}
+
+// 歌曲时间格式化
+export function getDuration(duration) {
+  // console.log(duration)
+
+  // parseInt保留整数部分，舍弃小数部分
+  let allSecond = parseInt(duration / 1000)
+  let min = parseInt(allSecond / 60)
+  let sec = allSecond - min * 60
+  min = min < 10 ? '0' + min : min
+  sec = sec < 10 ? '0' + sec : sec
+  return min + ':' + sec
 }
