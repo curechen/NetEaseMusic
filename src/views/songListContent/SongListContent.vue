@@ -42,7 +42,11 @@
         <p class="desc" :class="{ extend: show === true }">
           <span>简介 : </span>
           {{ getDescription }}
-          <i class="el-icon-caret-bottom" @click="extendContent"  :class="{ rotate: show === true }"/>
+          <i
+            class="el-icon-caret-bottom"
+            @click="extendContent"
+            :class="{ rotate: show === true }"
+          />
         </p>
       </div>
     </div>
@@ -81,19 +85,22 @@ export default {
       },
       musicList: [],
       // 显示简介更多内容
-      show: false
+      show: false,
     }
   },
   created() {
     this.id = this.$route.params.id
-    getSongListContent(this.id).then((res) => {
-      // console.log(res)
-      this.musicList = res.playlist.tracks
-      this.information = res.playlist
-      // console.log(this.information);
-    })
+    this.getSongListContent()
   },
   methods: {
+    getSongListContent() {
+      getSongListContent(this.id).then((res) => {
+        // console.log(res)
+        this.musicList = res.playlist.tracks
+        this.information = res.playlist
+        // console.log(this.information);
+      })
+    },
     getTime() {
       // let time = this.information.createTime
       // console.log(this.information);
@@ -101,7 +108,7 @@ export default {
     extendContent() {
       // console.log('haha');
       this.show = !this.show
-    }
+    },
   },
   computed: {
     getTags() {
@@ -135,6 +142,17 @@ export default {
     showDate: function (value) {
       let date = new Date(value)
       return formatDate(date, 'yyyy-MM-dd')
+    },
+  },
+  // 解决动态路由复用的问题
+  watch: {
+    // route里可以跟两个形参 to from 代表发生改变前后的对象
+    $route() {
+      // console.log(to)
+      // console.log(from);
+
+      this.id = this.$route.params.id
+      this.getSongListContent()
     },
   },
 }
@@ -255,7 +273,7 @@ export default {
 
 /* 修改图标样式 */
 .rotate:before {
-  content: "\e78f";
+  content: '\e78f';
 }
 
 .detail-content .text .desc span {

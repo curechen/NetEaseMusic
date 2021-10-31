@@ -6,10 +6,10 @@
       </el-header>
 
       <el-container class="middle">
-        <el-aside width="200px">
+        <el-aside width="200px" class="topnav_box">
           <side-bar />
         </el-aside>
-        <el-main>
+        <el-main class="topnav_box">
           <router-view />
           <!-- <search/> -->
         </el-main>
@@ -42,8 +42,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .container {
   position: absolute;
   top: 50%;
@@ -72,14 +70,33 @@ export default {
   background-color: #fff;
 }
 
+.el-aside::-webkit-scrollbar {
+  display: none;
+}
+
+.el-aside:hover::-webkit-scrollbar {
+  display: block;
+}
+
 .el-main {
   background-color: #fff;
   padding: 0;
 }
 
+.topnav_box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.topnav_box::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  /* box-shadow: inset 0 0 6px rgba(225,225,225); */
+  background-color: rgb(225,225,225);
+}
+
+
 .el-footer {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 0;
   border-top: 1px solid #e0e0e0;
   background-color: #fff;

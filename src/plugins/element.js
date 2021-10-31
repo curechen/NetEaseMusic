@@ -11,6 +11,7 @@ import {
     Input,
     MenuItem,
     Menu,
+    Submenu,
     MenuItemGroup,
     Carousel,
     CarouselItem,
@@ -59,6 +60,7 @@ Vue.use(Dialog)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Popover)
+Vue.use(Submenu)
 
 //原型链挂载
 Vue.prototype.$message = Message

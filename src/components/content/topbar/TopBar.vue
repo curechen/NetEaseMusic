@@ -41,9 +41,9 @@ export default {
 <style scoped>
 .top-bar {
   display: flex;
-  width: 550px;
-  height: 45px;
-  line-height: 45px;
+  width: 820px;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
   font-size: 16px;
   background-color: white;
@@ -54,8 +54,13 @@ export default {
   margin-right: 20px;
 }
 
+.top-bar .top-bar-item:hover {
+  cursor: pointer;
+}
+
 .top-bar .top-bar-item span {
   color: #373737;
+  /* margin-bottom: 10px; */
 }
 
 .top-bar .active {

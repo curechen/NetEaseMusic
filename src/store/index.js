@@ -8,10 +8,13 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    // 存储个人详细信息
     profile: '',
-    showLogin: 'true',
+    // 用户id
+    userId: 0,
     // 当前歌曲的详细信息
     songDetail: {
+      id: 0,
       name: '',
       al: {
         picUrl: '',
@@ -24,19 +27,13 @@ const store = new Vuex.Store({
       dt: 0
     },
     // 播放列表
-    musiclistId: [],
-    // 播放数量
-    musicCount: 0,
+    playList: [],
     // 正在播放的歌曲
     nowMusic: '',
-    // 音乐清单
-    nowMusicMenu: [],
     //音乐url
     musicUrl: '',
     //播放状态
     musicState: false,
-    //正在播放的视频
-    nowVideoInfo: {}
   },
   mutations,
   getters

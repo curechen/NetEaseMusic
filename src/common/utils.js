@@ -35,7 +35,7 @@ function padLeftZero(str) {
   return ('00' + str).substr(str.length)
 }
 
-// 歌曲时间格式化
+// 歌曲时间格式化 毫秒
 export function getDuration(duration) {
   // console.log(duration)
 

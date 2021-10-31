@@ -4,7 +4,9 @@
       :titles="['个性推荐', '专属订制', '歌单', '排行榜', '歌手', '最新音乐']"
       @tabClick="tabClick"
     />
-    <router-view />
+    <div class="scroll">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -49,7 +51,21 @@ export default {
 
 <style scoped>
 .find {
-  padding: 10px 30px;
+  position: relative;
+  padding: 55px 30px 10px;
+  /* overflow: hidden; */
+}
+
+.find .top-bar {
+  position: fixed;
+  top: 60px;
+  /* padding-top: 10px; */
+  z-index: 111;
+  /* margin-top: 60px; */
+}
+
+.find .scroll {
+  margin-top: 10px;
 }
 
 </style>

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { accountLogin } from 'network/login'
+import { accountLogin, getUserDetail } from 'network/login'
 
 import Qs from 'qs'
 
@@ -49,9 +49,16 @@ export default {
       })
       let timestamp = Date.parse(new Date())
       accountLogin(data, timestamp).then((res) => {
-        console.log(res.code)
+        // console.log(res.code)
         if (res.code === 200) {
-          this.$router.push('/index')
+          
+          getUserDetail().then(res => {
+            console.log(res.account.id)
+            // this.$store.commit('setUserId', res.account.id)
+            window.sessionStorage.setItem("userId", res.account.id);
+            this.$router.push('/index')
+          })
+          
         }
       })
     },

@@ -11,8 +11,9 @@
     <ul>
       <li
         v-for="(item, index) in musicList"
-        @dblclick="playMusic(item.id)"
+        @dblclick="playMusic(item.id, index)"
         :key="index"
+        :class="{ active: item.id === songDetail.id }"
       >
         <span class="song-num">{{ sortIndex(index) }}</span>
         <span class="song-name">
@@ -28,6 +29,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import { playMusic, getSongDetail } from 'network/search'
 
 import { getDuration } from 'common/utils'
@@ -44,6 +47,9 @@ export default {
   },
   data() {
     return {}
+  },
+  computed: {
+    ...mapState(['musicState', 'songDetail']),
   },
   methods: {
     // getDuration(duration) {
@@ -62,30 +68,45 @@ export default {
     },
 
     // 播放歌曲包括获取歌曲url和获得歌曲详细内容两部分
-    playMusic(id) {
+    // index是为了获得歌曲在当前列表中的序号，方便切换歌曲
+    playMusic(id, index) {
+      
+      // 把当前列表中的歌曲全部推入songList中
+      this.$store.commit('setPlayList', this.musicList)
+
+      // 通过id拿到url，用audio控件播放
       playMusic(id).then((res) => {
-        console.log(res)
+        // console.log(res)
         let songUrl = res.data[0].url
         this.$store.commit('setMusicUrl', songUrl)
-        this.$store.commit('setMusicState')
+        if (this.musicState == false) {
+          this.$store.commit('setMusicState')
+        }
       })
 
+      // 通过id拿到歌曲的详细信息
       getSongDetail(id).then((res) => {
-        console.log(res.songs[0])
+        // console.log(res.songs[0])
         let songDetail = res.songs[0]
+        songDetail.index = index
         this.$store.commit('setSongDetail', songDetail)
+        console.log(this.songDetail.index);
       })
     },
   },
   filters: {
     filterTime(time) {
       return getDuration(time)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
+.active .song-name {
+  color: #ec4141 !important;
+}
+
 .song-content {
   width: 100%;
 }

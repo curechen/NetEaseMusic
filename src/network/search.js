@@ -9,6 +9,8 @@ export function searchMusic(keywords) {
   })
 }
 
+// 接口里歌曲url和歌曲详情就是分开的，所以要分开获取
+
 // 获取播放歌曲url
 export function playMusic(id) {
   return request({
