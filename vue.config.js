@@ -20,7 +20,7 @@ module.exports = {
         // target: 'http://localhost:3000/',
         target: 'https://netease-cloud-music-api-rho-lemon.vercel.app/',
         // 上述注释想要实现，在cli2中还要加上下面这句话
-        // changeOrigin: true,
+        changeOrigin: true,
         ws: true,
         pathRewrite: {
           // 重写路径，目的是将 /api 从路径中删去
