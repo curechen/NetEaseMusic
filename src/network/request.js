@@ -5,7 +5,7 @@ import axios from 'axios'
 export function request(config) {
   // 创建实例
   const instance = axios.create({
-    baseURL: 'https://netease-cloud-music-api-rho-lemon.vercel.app/',
+    baseURL: '/api',
     timeout: 5000,
     withCredentials: true
   })
