@@ -18,7 +18,7 @@ module.exports = {
       '/api': {
         // 只要访问的 url 中带有 /api/xx 就会把地址替换为 http://localhost:3000/
         // target: 'http://localhost:3000/',
-        target: 'https://netease-cloud-music-api-rho-lemon.vercel.app',
+        target: 'https://netease-cloud-music-api-rho-lemon.vercel.app/',
         // 上述注释想要实现，在cli2中还要加上下面这句话
         // changeOrigin: true,
         ws: true,
